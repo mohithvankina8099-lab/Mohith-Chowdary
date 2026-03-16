@@ -1,111 +1,101 @@
-body {
-  background: linear-gradient(to right, #ff9a9e, #fad0c4);
-  font-family: Arial, sans-serif;
-  text-align: center;
-  margin: 0;
-  padding: 50px 20px;
-  overflow-x: hidden;
-}
+function showWish(option) {
 
-/* Heading animation */
-h1 {
-  animation: slideDown 1s ease;
-}
+  let wish = "";
 
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
+  if (option === 1) {
+    wish = "Today and everyday wishing only the best for you💞🫂";
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  else if (option === 2) {
+    wish = "Wishing you happiness , success and lots of beautiful moments from this year🩷🤗";
   }
-}
-
-.top-buttons {
-  margin-top: 20px;
-}
-
-.container {
-  margin-top: 30px;
-}
-
-/* Buttons */
-button {
-  padding: 12px 22px;
-  margin: 10px;
-  font-size: 16px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  background-color: #ffb6b9;
-  transition: transform 0.3s, background-color 0.3s;
-}
-
-button:hover {
-  background-color: #ff6f61;
-  color: white;
-  transform: scale(1.1);
-}
-
-button:active {
-  transform: scale(0.95);
-}
-
-/* Wish box */
-#wishBox {
-  margin: 30px auto;
-  max-width: 400px;
-  font-size: 20px;
-  background: white;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
-}
-
-/* Pop animation */
-.pop {
-  animation: pop 0.5s ease;
-}
-
-@keyframes pop {
-  0% { transform: scale(0.8); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
-}
-
-/* Falling hearts */
-.confetti {
-  position: fixed;
-  top: -10px;
-  font-size: 18px;
-  pointer-events: none;
-  animation: fall linear forwards;
-}
-
-@keyframes fall {
-  from {
-    transform: translateY(-10vh);
+  else if (option === 3) {
+    with lots of love = "Just after being successful, my next step will be marriying you😁💓";
   }
-  to {
-    transform: translateY(100vh);
-  }
+
+  const box = document.getElementById("wishBox");
+
+  box.classList.remove("pop");
+  void box.offsetWidth;
+  box.classList.add("pop");
+
+  box.innerText = wish;
 }
+
+
+/* Falling hearts effect */
+
+function confettiEffect() {
+
+  const hearts = ["🩷","💕"];
+
+  for (let i = 0; i < 25; i++) {
+
+    const confetti = document.createElement("div");
+
+    confetti.classList.add("confetti");
+
+    confetti.style.left = Math.random() * 100 + "vw";
+
+    confetti.style.animationDuration = (Math.random() * 3 + 2) + "s";
+
+    confetti.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+
+    document.body.appendChild(confetti);
+
+    setTimeout(() => {
+      confetti.remove();
+    }, 5000);
+  }
+
+}
+
 
 /* Background floating hearts */
-.bg-heart {
-  position: fixed;
-  bottom: -20px;
-  font-size: 16px;
-  opacity: 0.4;
-  animation: floatUp 12s linear infinite;
+
+function backgroundHearts() {
+
+  const hearts = ["🩷","💏"];
+
+  setInterval(() => {
+
+    const heart = document.createElement("div");
+
+    heart.classList.add("bg-heart");
+
+    heart.innerHTML = hearts[Math.floor(Math.random()*hearts.length)];
+
+    heart.style.left = Math.random()*100 + "vw";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    },12000);
+
+  },800);
+
 }
 
-@keyframes floatUp {
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(-120vh);
-  }
+backgroundHearts();
+
+
+/* Celebrate button */
+
+function celebrate() {
+
+  alert("I Love Youuu so much jeshmitha 😘💖");
+
+  confettiEffect();
+
+  const box = document.getElementById("wishBox");
+
+  box.classList.remove("pop");
+
+  void box.offsetWidth;
+
+  box.classList.add("pop");
+
+  box.innerText =
+  "You are such a special person in my life whom i cherish dearly may everyday bring you a step closer to realizing every beautiful dream of yours 💗💙✨";
+
 }
